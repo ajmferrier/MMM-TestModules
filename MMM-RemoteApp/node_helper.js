@@ -1,0 +1,11 @@
+var NodeHelper = require("node_helper")
+
+module.exports = NodeHelper.create({
+  start: function() {
+  },
+  socketNotificationReceived: function(notification, payload) {
+      switch(notification) {
+          
+      }
+  },
+})
