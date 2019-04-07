@@ -7,13 +7,38 @@ Module.register("MMM-AdamDev", {
         this.count = 0;
     },
 
-    getDom: function() {
+    // function to test get request from backend
+    getModuleInfo: function () {
+        Log.log("--------------------");
+        Log.log("fetching");
+        Log.log("--------------------");
+        var moduleRequest = new XMLHttpRequest();
+        const url = "http://localhost:3000/modules";
+        moduleRequest.open("GET", url);
+        moduleRequest.send();
+        moduleRequest.onreadystatechange=(e)=>{
+            Log.log(moduleRequest.responseText);
+        }
+    },
+
+    getDom: function() {    
+        // self.getModuleInfo();
+        
+        Log.log("--------------------");
+        Log.log("fetching");
+        Log.log("--------------------");
+        var moduleRequest = new XMLHttpRequest();
+        const url = "http://localhost:3000/modules";
+        moduleRequest.open("GET", url);
+        moduleRequest.send();
+        moduleRequest.onreadystatechange=(e)=>{
+            Log.log(moduleRequest.responseText);
+        }
+
+
         var element = document.createElement("div");
         element.className = "myContent";
-        element.innerHTML = "Hello: " + this.config.foo;
-        var subElement = document.createElement("p");
-        subElement.id = "COUNT";
-        element.appendChild(subElement);
+        element.innerHTML = "Hello"
         return element;
     },
     

@@ -18,14 +18,43 @@ Module.register("MMM-RemoteApp", {
                 Log.log(modules);
                 this.moduleList = modules;
 
+                // iterate through list of modules
+                for (var i = 0; i < this.moduleList.length; i++) {
+                    const moduleName = this.moduleList[i].name;
+                    const hiddenStatus = this.moduleList[i].hidden;
+
+                    // put needed data into json object to send
+                    var data = {};
+                    data._id = moduleName;
+                    data.active = hiddenStatus;
+                    var json = JSON.stringify(data);
+                    
+                    // perform PUT request to http://localhost:3000/modules/{name}
+                    var putRequest = new XMLHttpRequest();
+                    const url = "http://localhost:3000/modules/" + moduleName;
+                    putRequest.open("PUT", url);
+                    putRequest.setRequestHeader('Content-type','application/json; charset=utf-8');
+                    putRequest.onload = function () {
+                        var returnData = JSON.parse(putRequest.responseText);
+                        if (putRequest.readyState == 4 && putRequest.status == "200") {
+                            console.table(returnData);
+                        } else {
+                            console.error(returnData);
+                        }
+                    }
+
+                    putRequest.send(json);
+
+                }
+
                 // turn clock on and off every second
-                var timer = setInterval(() =>{
-                    MM.getModules().exceptModule(this).enumerate(function(module) {
-                        module.hide(1000, function() {
-                            // module hidden
-                        });
-                    });
-                }, 1000);
+                // var timer = setInterval(() =>{
+                //     MM.getModules().exceptModule(this).enumerate(function(module) {
+                //         module.hide(1000, function() {
+                //             // module hidden
+                //         });
+                //     });
+                // }, 1000);
 
                 // timer = setInterval(() =>{
                 //     MM.getModules().exceptModule(this).enumerate(function(module) {
