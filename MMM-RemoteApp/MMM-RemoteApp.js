@@ -26,7 +26,7 @@ Module.register("MMM-RemoteApp", {
                     // put needed data into json object to send
                     var data = {};
                     data._id = moduleName;
-                    data.active = hiddenStatus;
+                    data.hidden = hiddenStatus;
                     var json = JSON.stringify(data);
                     
                     // perform PUT request to http://localhost:3000/modules/{name}
