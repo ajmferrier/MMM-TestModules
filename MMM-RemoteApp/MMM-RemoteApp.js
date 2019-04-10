@@ -1,4 +1,5 @@
 Module.register("MMM-RemoteApp", {
+
     defaults: {
         moduleList: []
     },
@@ -8,6 +9,9 @@ Module.register("MMM-RemoteApp", {
     },
 
     notificationReceived: function(notification, payload, sender) {
+
+        const SERVER_URL = "https://mm-remote-server.herokuapp.com/modules";
+
         switch(notification) {
             case "ALL_MODULES_STARTED":
                 // once all modules are started, get list of modules
@@ -31,7 +35,7 @@ Module.register("MMM-RemoteApp", {
                     
                     // perform PUT request to http://localhost:3000/modules/{name}
                     var putRequest = new XMLHttpRequest();
-                    const url = "http://localhost:3000/modules/" + moduleName;
+                    const url = SERVER_URL + "/" + moduleName;
                     putRequest.open("PUT", url);
                     putRequest.setRequestHeader('Content-type','application/json; charset=utf-8');
                     putRequest.onload = function () {
