@@ -108,16 +108,16 @@ Module.register("MMM-RemoteApp", {
     },
 
     getDom: function() {
-        var element = document.createElement("div");
-        element.className = "myContent";
-        element.innerHTML = "List of current modules:";
-        for (var i = 0; i < this.moduleList.length; i++){
-            var subElement = document.createElement("div");
-            subElement.id = "MODULE " + i;
-            subElement.innerHTML = this.moduleList[i].data.name;
-            element.appendChild(subElement);
-        }
-        return element;
+        // var element = document.createElement("div");
+        // element.className = "myContent";
+        // element.innerHTML = "List of current modules:";
+        // for (var i = 0; i < this.moduleList.length; i++){
+        //     var subElement = document.createElement("div");
+        //     subElement.id = "MODULE " + i;
+        //     subElement.innerHTML = this.moduleList[i].data.name;
+        //     element.appendChild(subElement);
+        // }
+        // return element;
     },
   
 })
