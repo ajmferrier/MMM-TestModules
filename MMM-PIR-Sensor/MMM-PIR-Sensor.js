@@ -2,11 +2,13 @@
 
 Module.register("MMM-PIR-Sensor", {
     defaults: {
-        mqttServer: "http://m16.cloudmqtt.com",
-        brokerPort: 11056,
+        mqttServer: "tls://m16.cloudmqtt.com",
+        brokerPort: 21056,
         topic:      "sensors/pir",
-        username:   "",
-        password:   "" // set username/pw in the config file
+        username:   "iruokgqc",
+        password:   "iJrh6uT-j_uN"
+        // issue: these dont get ovverridden when set in the config file
+        // so for now, writing in as defaults (not good practice)
     },
 
     socketNotificationReceived: function(notification, payload) {
@@ -48,7 +50,7 @@ Module.register("MMM-PIR-Sensor", {
         }
 
         var mqttDiv = document.createElement('div');
-        mqttDiv.innerHTML = this.roundValue(this.mqttVal.toString());
+        mqttDiv.innerHTML = this.mqttVal.toString();
         wrapper.appendChild(mqttDiv);
 
         return wrapper;
