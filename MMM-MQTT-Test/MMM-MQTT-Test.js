@@ -1,16 +1,15 @@
-// based off code from https://github.com/javiergayala/MMM-mqtt
-
-Module.register("MMM-PIR-Sensor", {
+Module.register("MMM-MQTT-Test", {
     defaults: {
-        mqttServer: "http://m16.cloudmqtt.com",
-        brokerPort: 11056,
+        mqttServer: "mqtt://m16.cloudmqtt.com",
+        brokerPort: 31056,
         topic:      "sensors/pir",
         username:   "",
         password:   "" // set username/pw in the config file
     },
 
     socketNotificationReceived: function(notification, payload) {
-        if (notification === 'MQTT_DATA' && payload.topic === this.config.topic) {
+        if (notification === 'MQTT_DATA') {
+            Log.log("data received****************")
             this.mqttVal = payload.data.toString();
             this.loaded = true;
             this.updateDom();
@@ -22,7 +21,7 @@ Module.register("MMM-PIR-Sensor", {
     },
 
     start: function () {
-        Log.log("Starting PIR Sensor reader");
+        Log.log("Starting MQTT Test");
         this.loaded = false;
         this.mqttVal = '';
 
@@ -48,7 +47,7 @@ Module.register("MMM-PIR-Sensor", {
         }
 
         var mqttDiv = document.createElement('div');
-        mqttDiv.innerHTML = this.roundValue(this.mqttVal.toString());
+        mqttDiv.innerHTML = this.mqttVal.toString();
         wrapper.appendChild(mqttDiv);
 
         return wrapper;
