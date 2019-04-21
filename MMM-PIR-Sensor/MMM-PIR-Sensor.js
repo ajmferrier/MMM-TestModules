@@ -151,18 +151,18 @@ Module.register("MMM-PIR-Sensor", {
     },
 
     getDom: function() {
-        var wrapper = document.createElement('div');
+        // var wrapper = document.createElement('div');
 
-        if (!this.loaded) {
-            wrapper.innerHTML = "Loading MQTT data...";
-            return wrapper;
-        }
+        // if (!this.loaded) {
+        //     wrapper.innerHTML = "Loading MQTT data...";
+        //     return wrapper;
+        // }
 
-        var mqttDiv = document.createElement('div');
-        mqttDiv.innerHTML = this.mqttVal.toString();
-        wrapper.appendChild(mqttDiv);
+        // var mqttDiv = document.createElement('div');
+        // mqttDiv.innerHTML = this.mqttVal.toString();
+        // wrapper.appendChild(mqttDiv);
 
-        return wrapper;
+        // return wrapper;
     }
 
 })
